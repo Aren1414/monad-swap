@@ -1,20 +1,24 @@
 import { ethers } from "ethers";
 
 async function connectMetamask() {
-    if (window.ethereum) {
-        try {
-            const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+    if (!window.ethereum) {
+        alert("MetaMask not detected! Please install MetaMask.");
+        return;
+    }
 
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
+    try {
+        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
 
-            console.log("Connected account:", accounts[0]);
-            return { provider, signer, accounts };
-        } catch (error) {
-            console.error("Error connecting MetaMask:", error);
-        }
-    } else {
-        console.log("MetaMask not detected! Please install MetaMask.");
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+
+        console.log("Connected account:", accounts[0]);
+        alert("Connected to: " + accounts[0]);
+
+        return { provider, signer, accounts };
+    } catch (error) {
+        console.error("Error connecting MetaMask:", error);
+        alert("Error: " + error.message);
     }
 }
 

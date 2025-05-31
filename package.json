@@ -1,0 +1,23 @@
+{
+  "name": "monad-swap",
+  "version": "1.0.0",
+  "description": "Monad Swap - Decentralized Exchange on Monad Testnet**    A decentralized exchange (DEX) built on the Monad Testnet, allowing users to swap tokens seamlessly",
+  "main": "connectMetamask.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aren1414/monad-swap.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aren1414/monad-swap/issues"
+  },
+  "homepage": "https://github.com/Aren1414/monad-swap#readme",
+  "dependencies": {
+    "ethers": "^6.14.3"
+  }
+}

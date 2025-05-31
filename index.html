@@ -15,38 +15,11 @@
         import getBalance from "./getBalance.js";
 
         document.getElementById("connectWallet").addEventListener("click", async () => {
-            try {
-                if (!window.ethereum) {
-                    alert("MetaMask not detected! Please install MetaMask.");
-                    return;
-                }
-                
-                const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-                console.log("Connected Account:", accounts[0]);
-                alert("Connected to: " + accounts[0]);
-
-            } catch (error) {
-                console.error("Connection Error:", error);
-                alert("Error: " + error.message);
-            }
+            await connectMetamask();
         });
 
         document.getElementById("getBalance").addEventListener("click", async () => {
-            try {
-                const { provider, accounts } = await connectMetamask();
-                if (!provider) {
-                    alert("MetaMask connection failed!");
-                    return;
-                }
-
-                const balance = await provider.getBalance(accounts[0]);
-                console.log("Wallet Balance:", ethers.utils.formatEther(balance), "ETH");
-                alert("Wallet Balance: " + ethers.utils.formatEther(balance) + " ETH");
-
-            } catch (error) {
-                console.error("Balance Fetch Error:", error);
-                alert("Error retrieving balance: " + error.message);
-            }
+            await getBalance();
         });
     </script>
 
