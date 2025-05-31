@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monad Swap</title>
+</head>
+<body>
+
+    <button id="connectWallet">Connect MetaMask</button>
+    <button id="getBalance">Check Balance</button>
+
+    <script type="module">
+        import connectMetamask from "./connectMetamask.js";
+        import getBalance from "./getBalance.js";
+
+        document.getElementById("connectWallet").addEventListener("click", async () => {
+            await connectMetamask();
+        });
+
+        document.getElementById("getBalance").addEventListener("click", async () => {
+            await getBalance();
+        });
+    </script>
+
+</body>
+</html>
